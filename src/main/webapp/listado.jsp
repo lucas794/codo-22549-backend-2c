@@ -12,19 +12,29 @@
 <body>
 	<!-- navbar -->
 	<jsp:include page="navbar.jsp"/>
+	<% List<String> errores_encontrados = (List<String>) request.getAttribute("errores"); %>
+
+	<% 	if( errores_encontrados != null ) { %>
+		    <div class="alert alert-danger" role="alert">
+			<% for( String errores : errores_encontrados ) { %>
+					Se han encontrado los siguientes errores:
+					<% out.print("<li>" + errores + "</li>"); %>
+				</div>
+			<%}
+	}%>
 	<div class="container">
 		<div class="row">
 			<h1>Listado de productos</h1>
 			<div class="col-12 mt-2">
-				<table class="table">
-					<thead>
+				<table class="table table-striped align-middle">
+					<thead class="table-light align-middle">
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Titulo</th>
 							<th scope="col">Precio</th>
 							<th scope="col">Autor</th>
 							<th scope="col">Im&aacute;gen</th>
-							<th scope="col">&nbsp;</th>
+							<th scope="col">Accion</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -86,7 +96,7 @@
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
-		        ¿Desea eliminar el articulo?
+		        ï¿½Desea eliminar el articulo?
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

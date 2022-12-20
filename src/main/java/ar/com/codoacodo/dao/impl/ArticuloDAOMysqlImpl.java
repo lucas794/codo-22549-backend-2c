@@ -150,7 +150,9 @@ public class ArticuloDAOMysqlImpl implements IArticuloDAO {
 		Statement statement = connection.createStatement();
 		
 		//3 - obtener los resultados: java.sql.ResultSet
-		String sql = "select * from articulo where titulo like '%"+clave+"%'";
+		String Like = String.format("%%%s%%", clave);
+		String sql = String.format("SELECT * FROM articulo WHERE titulo like '%s' OR autor LIKE '%s' OR precio LIKE '%s';", Like, Like, Like);
+
 		ResultSet resultSet = statement.executeQuery(sql);
 		//1    2      3      4     5
 		//id|titulo|autor |precio|img

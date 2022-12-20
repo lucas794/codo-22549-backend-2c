@@ -11,7 +11,7 @@
 			<div class="row">
 				<div class="col-12">
 					<h1>
-						#22549 - Marte y Jueves - 18:30 - 20:00 hs.
+						#22549 - Martes y Jueves - 18:30 - 20:00 hs.
 					</h1>
 				</div>
 			</div>

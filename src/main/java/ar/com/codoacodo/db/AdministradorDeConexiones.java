@@ -13,7 +13,7 @@ public class AdministradorDeConexiones {
 		String hosts = "localhost";
 		String port = "3306";
 		String username = "root";
-		String password = "root";
+		String password = "";
 		String dbName = "22549"; 
 		
 		//por usar JDBC, debo armar la url así: 

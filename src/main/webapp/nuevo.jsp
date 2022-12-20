@@ -1,3 +1,4 @@
+<%@ page import="java.util.List" %>
 <!-- codigo estatico -->
 <!Doctype html>
 <html lang ="es">
@@ -7,6 +8,25 @@
 	<body>
 		<!-- navbar -->
 		<jsp:include page="navbar.jsp"/>
+		<% List<String> errores = (List<String>) request.getAttribute("errores");
+		   if( errores != null && !errores.isEmpty() ) { %>
+			   <div class="alert alert-danger" role="alert">
+					   Se han encontrado los siguientes errores:
+						<%  for( String error : errores)
+							out.print("<li>" + error+ "</li>"); %>
+				</div>
+		<%}%>
+		<% List<String> elementos = (List<String>) request.getAttribute("recordar_input");
+			String titulo = "";
+			String autor = "";
+			String precio = "";
+
+		   if( elementos != null ) {
+			   titulo = elementos.get(0);
+			   autor = elementos.get(1);
+			   precio = elementos.get(3);
+		   }
+		%>
 		<main class="container">
 			<h1>Nuevo Producto</h1>
 			<div class="row">
@@ -23,8 +43,8 @@
 					    	name="titulo" 
 					    	type="text" 
 					    	class="form-control" 
-					    	id="validationCustom01" 
-					    	value="" 
+					    	id="validationCustom01"
+					    	value="<%=titulo%>"
 					    	required>
 					    <div class="valid-feedback">
 					      Looks good!
@@ -39,21 +59,22 @@
 					    	type="text" 
 					    	class="form-control" 
 					    	id="validationCustom02" 
-					    	value="" 
+					    	value="<%=autor%>"
 					    	required>
 					    <div class="valid-feedback">
 					      Looks good!
 					    </div>
 					  </div>
 					  <div class="col-md-4">
-					    <label for="validationCustomUsername" class="form-label">
+						<label for="validationCustomUsername" class="form-label">
 					    	Precio
 					    </label>
 					    <div class="input-group has-validation">
 					      <input 
 					      	name="precio"
 					      	type="number"					       
-					      	class="form-control" 
+					      	class="form-control"
+							value="<%=precio%>"
 					      	id="validationCustomUsername" 
 					      	aria-describedby="inputGroupPrepend" 
 					      	required>

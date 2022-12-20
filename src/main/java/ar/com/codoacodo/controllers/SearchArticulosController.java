@@ -24,14 +24,15 @@ public class SearchArticulosController extends HttpServlet{
 		
 		List<Articulo> articulosBuscado = new ArrayList<>();
 		try {
-			articulosBuscado = dao.search(claveBusquda);		
+			articulosBuscado = dao.search(claveBusquda);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
 		//guardo bajo el nombre productos una lista de articulos
 		req.setAttribute("productos", articulosBuscado);
-		
+		req.setAttribute( "busqueda_realizada", claveBusquda );
+
 		//redirect a otra pagina u otro servlet(Controller/WebServlet)
 		getServletContext().getRequestDispatcher("/listado.jsp").forward(req, resp);
 	}

@@ -22,10 +22,14 @@ public class FindAllArticulosController extends HttpServlet {
 		IArticuloDAO dao = new ArticuloDAOMysqlImpl(); 
 		
 		List<Articulo> articulosBuscado = new ArrayList<>();
+		List<String> errores = new ArrayList<>();
+
 		try {
 			articulosBuscado = dao.findAll();		
 		}catch(Exception e) {
 			e.printStackTrace();
+			errores.add(e.getMessage());
+			req.setAttribute("errores", errores);
 		}
 		
 		//guardo bajo el nombre productos una lista de articulos
